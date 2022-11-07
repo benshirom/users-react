@@ -33,8 +33,11 @@ const HeaderAdmin = () => {
                 <span className='d-flex'>
 
                   <li className="nav-item">
-                    <Link className="nav-link" to={'/admin/userslist'}>Users list</Link>
+                    <Link className="nav-link active" to={'/admin/userslist'}>Users list</Link>
                   </li>
+                  <li className="nav-item">
+                  <Link className="nav-link active" to={'/admin/myinfo'}>My Info</Link>
+                </li>
                   <li>
                     <button className='btn btn-danger' onClick={onLogOut}>Log out</button>
                   </li>

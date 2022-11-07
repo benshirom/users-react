@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import HomeAdmin from './components/admin/homeAdmin'
+import MyInfo from './components/admin/myInfo'
 import UsersList from './components/admin/usersList'
 import Login from './components/auth/login'
 import LoginSign from './components/auth/loginSign'
@@ -24,6 +25,7 @@ const AppRoutes = () => {
                     <Route path='/login' element={<Login />} />
                     <Route path='/signup' element={<SignUp />} />
                     <Route path='/verification/:name' element={<Verification />} />
+                    <Route path='/myinfo' element={<MyInfo />} />
 
                     {/* ******** */}
                 </Route>
@@ -33,6 +35,7 @@ const AppRoutes = () => {
                     {/* Outlet */}
                     <Route path='/admin' element={<HomeAdmin />} />
                     <Route path='/admin/usersList' element={<UsersList />} />
+                    <Route path='/admin/myinfo' element={<MyInfo />} />
                     {/* ******** */}
                 </Route>
                 {/*   (*) => Rest of routes!?!?  */}

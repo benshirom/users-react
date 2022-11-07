@@ -33,13 +33,17 @@ const Header = () => {
                 <Link className="nav-link active" aria-current="page" to={'/'}>Home</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to={'/about'}>About</Link>
+                <Link className="nav-link active" to={'/about'}>About</Link>
               </li>
               {localStorage[TOKEN_NAME] ?
-
+              <span className="d-flex">
+                <li className="nav-item">
+                  <Link className="nav-link active" to={'/myinfo'}>My Info</Link>
+                </li>
                 <li>
                   <button className='btn btn-danger' onClick={onLogOut}>Log out</button>
                 </li>
+              </span>
                 :
                 <li className="nav-item">
                   <Link className="nav-link" to={'/loginsign'}>Login / sign up</Link>
