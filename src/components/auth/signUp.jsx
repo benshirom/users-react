@@ -1,17 +1,24 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
+import { Triangle } from 'react-loader-spinner'
+import { useState } from 'react';
+
 import { API_URL, doApiMethodSignUpLogin } from '../../services/service';
 const SignUp = () => {
-    const nav = useNavigate()
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const nav = useNavigate();
     let { register, handleSubmit, getValues, formState: { errors } } = useForm();
     const regEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-    const regPassword =/^(?=.*[0-9])(?=.*[!@#$%^&*.<>])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+    const regPassword = /^(?=.*[0-9])(?=.*[!@#$%^&*.<>])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
     const onSub = (_dataBody) => {
 
         delete _dataBody.password2
         // console.log(_dataBody);
+        setIsSubmitted(true);
+
         doApi(_dataBody)
     }
 
@@ -25,7 +32,9 @@ const SignUp = () => {
             }
         } catch (err) {
             console.log(err.response);
-            alert(err.response.data.msg||err.response.data[0].message)
+            alert(err.response.data.msg || err.response.data[0].message)
+            setIsSubmitted(false);
+
         }
     }
     return (
@@ -46,7 +55,7 @@ const SignUp = () => {
                     {errors.email && <p className='text-danger m-0'>Enter valid email</p>}
 
                     <label className='mt-2'>password:</label>
-                    <input {...register('password', { required: true, minLength: 2, maxLength: 25 ,pattern: regPassword })} type="password" className='form-control' />
+                    <input {...register('password', { required: true, minLength: 2, maxLength: 25, pattern: regPassword })} type="password" className='form-control' />
                     {errors.password && <p className='text-danger m-0'>Enter valid password!</p>}
 
                     <label className='mt-2'>confirm password:</label>
@@ -58,7 +67,19 @@ const SignUp = () => {
                     {errors.phone && <p className='text-danger m-0'>Enter Valid Phone!</p>} */}
 
                     <div className='text-center d-flex flex-column'>
-                        <button className='mt-2 btn btn-primary'>Submit</button>
+                        {!isSubmitted ?
+                            <button className='mt-2 btn btn-primary'>Submit</button>
+                            :
+                            <Triangle
+                                height="80"
+                                width="80"
+                                radius="9"
+                                color='blue'
+                                ariaLabel='triangle-loading'
+                                wrapperStyle
+                                wrapperClass=" justify-content-around" />
+                        }
+
                         <a onClick={() => { nav('/login') }} >to login in </a>
                     </div>
 

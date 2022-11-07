@@ -2,14 +2,18 @@ import React from 'react'
 import { useState } from 'react';
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
+import{Triangle  }  from 'react-loader-spinner'
+
 import { API_URL, doApiMethodSignUpLogin, TOKEN_NAME } from '../../services/service';
 const Login = () => {
+  const [isSubmitted,setIsSubmitted] = useState(false)
   const nav = useNavigate()
   let { register, handleSubmit, getValues, formState: { errors } } = useForm();
   const regEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
   const [respError, setRespError] = useState("")
   const onSub = (_dataBody) => {
     console.log(_dataBody);
+    setIsSubmitted(true);
     doApi(_dataBody)
   }
 
@@ -28,9 +32,11 @@ const Login = () => {
           nav("/");
         }
       }
+      
     } catch (err) {
-
+      
       setRespError(err.response.data.msg_err)
+      setIsSubmitted(false);
       alert(err.response.data.msg);
     }
   }
@@ -49,10 +55,21 @@ const Login = () => {
           <input {...register('password', { required: true, minLength: 2, maxLength: 25 })} type="password" className='form-control' />
           {errors.password && <p className='text-danger m-0'>Enter valid password!</p>}
           {respError && <p className='text-danger m-0'>{respError}</p>}
-          <div className='text-center d-flex flex-column'>
+          <div className='text-center d-flex flex-column '>
 
-            <button className='mt-2 btn btn-primary my-2'>Login</button>
-           
+           {!isSubmitted ?
+             <button className='mt-2 btn btn-primary my-2'>Login</button>
+             :
+           <Triangle  
+           height = "80"
+           width = "80"
+           radius = "9"
+           color = 'blue'
+           ariaLabel = 'triangle-loading'     
+           wrapperStyle
+           wrapperClass=" justify-content-around"/>
+          }
+            
             <a onClick={() => { nav('/signup') }} >to sign in </a>
           </div>
 

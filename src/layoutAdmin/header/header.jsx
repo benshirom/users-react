@@ -30,7 +30,7 @@ const HeaderAdmin = () => {
               </li>
 
               {localStorage[TOKEN_NAME] ?
-                <span>
+                <span className='d-flex'>
 
                   <li className="nav-item">
                     <Link className="nav-link" to={'/admin/userslist'}>Users list</Link>
