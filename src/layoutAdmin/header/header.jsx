@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link,useNavigate } from "react-router-dom"
-import { TOKEN_NAME } from '../../services/service'
+import { TOKEN_NAME ,TOKEN_ROLE} from '../../services/service'
 const HeaderAdmin = () => {
   const nav = useNavigate();
 
@@ -8,6 +8,8 @@ const HeaderAdmin = () => {
     // מחיקת טוקן
     if (window.confirm("Are you sure you want to logout ?")) {
       localStorage.removeItem(TOKEN_NAME)
+      localStorage.removeItem(TOKEN_ROLE)
+
       // להעביר לעמוד לוג אין
       nav("/admin");
     }

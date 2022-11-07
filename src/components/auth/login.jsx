@@ -2,11 +2,13 @@ import React from 'react'
 import { useState } from 'react';
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
-import{Triangle  }  from 'react-loader-spinner'
+import { Triangle } from 'react-loader-spinner'
 
-import { API_URL, doApiMethodSignUpLogin, TOKEN_NAME } from '../../services/service';
+import { API_URL, doApiMethodSignUpLogin, TOKEN_NAME,TOKEN_ROLE } from '../../services/service';
+
 const Login = () => {
-  const [isSubmitted,setIsSubmitted] = useState(false)
+
+  const [isSubmitted, setIsSubmitted] = useState(false)
   const nav = useNavigate()
   let { register, handleSubmit, getValues, formState: { errors } } = useForm();
   const regEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -23,7 +25,7 @@ const Login = () => {
       const { data } = await doApiMethodSignUpLogin(url, "POST", _dataBody);
       console.log(data);
       if (data.token) {
-
+        localStorage.setItem(TOKEN_ROLE, data.userRole);
         localStorage.setItem(TOKEN_NAME, data.token);
         console.log(data);
         if (data.userRole == "admin") {
@@ -32,9 +34,9 @@ const Login = () => {
           nav("/");
         }
       }
-      
+
     } catch (err) {
-      
+
       setRespError(err.response.data.msg_err)
       setIsSubmitted(false);
       alert(err.response.data.msg);
@@ -57,19 +59,19 @@ const Login = () => {
           {respError && <p className='text-danger m-0'>{respError}</p>}
           <div className='text-center d-flex flex-column '>
 
-           {!isSubmitted ?
-             <button className='mt-2 btn btn-primary my-2'>Login</button>
-             :
-           <Triangle  
-           height = "80"
-           width = "80"
-           radius = "9"
-           color = 'blue'
-           ariaLabel = 'triangle-loading'     
-           wrapperStyle
-           wrapperClass=" justify-content-around"/>
-          }
-            
+            {!isSubmitted ?
+              <button className='mt-2 btn btn-primary my-2'>Login</button>
+              :
+              <Triangle
+                height="80"
+                width="80"
+                radius="9"
+                color='blue'
+                ariaLabel='triangle-loading'
+                wrapperStyle
+                wrapperClass=" justify-content-around" />
+            }
+
             <a onClick={() => { nav('/signup') }} >to sign in </a>
           </div>
 
