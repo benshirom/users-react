@@ -23,7 +23,7 @@ const AppRoutes = () => {
                     <Route path='/loginsign' element={<LoginSign />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/signup' element={<SignUp />} />
-                    <Route path='/verification' element={<Verification />} />
+                    <Route path='/verification/:name' element={<Verification />} />
 
                     {/* ******** */}
                 </Route>

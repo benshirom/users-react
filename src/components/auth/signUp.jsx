@@ -28,7 +28,7 @@ const SignUp = () => {
             const { data } = await doApiMethodSignUpLogin(url, "POST", _dataBody);
             console.log(data);
             if (data.email) {
-                nav('/verification')
+                nav(`/verification/${data.fullName.firstName}`)
             }
         } catch (err) {
             console.log(err.response);
