@@ -4,42 +4,41 @@ import { API_URL, doApiMethodToken, doApiMethodTokenPatch } from '../../services
 export default function UserItem(props) {
   let item = props.item;
   // משנה תפקיד של משתמש
-  const onRoleClick = async() => {
+  const onRoleClick = async () => {
     let bodyData;
-    if(item.role == "user"){
-      bodyData = {role:"admin"}
+    if (item.role == "user") {
+      bodyData = { role: "admin" }
     }
-    else if(item.role == "admin"){
-      bodyData = {role:"user"}
+    else if (item.role == "admin") {
+      bodyData = { role: "user" }
     }
-    let url = API_URL+"/users/changeRole/"+item._id;
-    try{
-if(item.role == "superadmin"){
+    let url = API_URL + "/users/changeRole/" + item._id;
+    try {
 
-  let resp = await doApiMethodTokenPatch(url,"PATCH",bodyData)
-  console.log(resp.data)
-  if(resp.data){
-    
-    props.doApi()
-  }
-}
+        let resp = await doApiMethodTokenPatch(url, "PATCH", bodyData)
+        console.log(resp.data)
+        if (resp.data) {
+
+          props.doApi()
+        }
     }
-    catch(err){
+    catch (err) {
       console.log(err.response);
       alert("There problem, or you try to change superAdmin to user");
     }
   }
-  const ondDelClick = async() => {
-    
-    let url = API_URL+"/users/"+item._id;
-    try{
-      let resp = await doApiMethodToken(url,"DELETE",{})
+  const ondDelClick = async () => {
+
+    let url = API_URL + "/users/" + item._id;
+    try {
+      
+      let resp = await doApiMethodToken(url, "DELETE", {})
       console.log(resp.data)
-      
-       props.doApi()
-      
+
+      props.doApi()
+
     }
-    catch(err){
+    catch (err) {
       console.log(err.response);
       alert("There problem, or you try to change superAdmin to user");
     }
@@ -53,8 +52,8 @@ if(item.role == "superadmin"){
       <td>
         <button onClick={onRoleClick}>
           {item.role}
-          </button>
-        </td>
+        </button>
+      </td>
       <td>
         <button className='badge bg-danger' onClick={ondDelClick}>Del</button>
       </td>
