@@ -9,7 +9,7 @@ export default function UserItem(props) {
     if(item.role == "user"){
       bodyData = {role:"admin"}
     }
-    else{
+    else if(item.role == "admin"){
       bodyData = {role:"user"}
     }
 
