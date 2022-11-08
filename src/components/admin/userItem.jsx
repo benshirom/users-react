@@ -31,7 +31,7 @@ export default function UserItem(props) {
     
     let url = API_URL+"/users/"+item._id;
     try{
-      let resp = await doApiMethodToken(url,"DELETE")
+      let resp = await doApiMethodToken(url,"DELETE",{})
       console.log(resp.data)
       // if(resp.data){
       //    props.doApi()
