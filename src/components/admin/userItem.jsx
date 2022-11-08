@@ -1,5 +1,5 @@
 import React from 'react'
-import { API_URL, doApiMethodToken } from '../../services/service';
+import { API_URL, doApiMethodToken, doApiMethodTokenPatch } from '../../services/service';
 
 export default function UserItem(props) {
   let item = props.item;
@@ -13,9 +13,10 @@ export default function UserItem(props) {
       bodyData = {role:"user"}
     }
 
+
     let url = API_URL+"/users/changeRole/"+item._id;
     try{
-      let resp = await doApiMethodToken(url,"PATCH",bodyData)
+      let resp = await doApiMethodTokenPatch(url,"PATCH",bodyData)
       console.log(resp.data)
       if(resp.data){
          props.doApi()
