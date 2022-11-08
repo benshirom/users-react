@@ -29,7 +29,7 @@ const Login = () => {
         localStorage.setItem(TOKEN_ROLE, data.userRole);
         localStorage.setItem(TOKEN_NAME, data.token);
         console.log(data);
-        if (data.userRole == "admin") {
+        if (data.userRole == "admin"||data.userRole == "superadmin") {
           nav("/admin");
         } else if (data.userRole == 'user') {
           nav("/");

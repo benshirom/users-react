@@ -12,15 +12,17 @@ export default function UserItem(props) {
     else if(item.role == "admin"){
       bodyData = {role:"user"}
     }
-
-
     let url = API_URL+"/users/changeRole/"+item._id;
     try{
-      let resp = await doApiMethodTokenPatch(url,"PATCH",bodyData)
-      console.log(resp.data)
-      if(resp.data){
-         props.doApi()
-      }
+if(item.role == "superadmin"){
+
+  let resp = await doApiMethodTokenPatch(url,"PATCH",bodyData)
+  console.log(resp.data)
+  if(resp.data){
+    
+    props.doApi()
+  }
+}
     }
     catch(err){
       console.log(err.response);
