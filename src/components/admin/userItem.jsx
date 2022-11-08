@@ -14,7 +14,7 @@ export default function UserItem(props) {
       bodyData = {role:"user"}
     }
 
-    let url = API_URL+"/users/changeRole/"+item._id;
+    let url = API_URL+"/users"+item._id;
     try{
       let resp = await doApiMethodToken(url,"PATCH",bodyData)
       console.log(resp.data)
