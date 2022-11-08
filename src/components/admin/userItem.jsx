@@ -1,5 +1,5 @@
 import React from 'react'
-import { API_URL, doApiMethodSignUpLogin, doApiMethodToken } from '../../services/service';
+import { API_URL, doApiMethodToken } from '../../services/service';
 
 export default function UserItem(props) {
   let item = props.item;
