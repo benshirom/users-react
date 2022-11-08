@@ -3,7 +3,6 @@ import { API_URL, doApiMethodSignUpLogin, doApiMethodToken } from '../../service
 
 export default function UserItem(props) {
   let item = props.item;
-
   // משנה תפקיד של משתמש
   const onRoleClick = async() => {
     let bodyData;
@@ -14,7 +13,7 @@ export default function UserItem(props) {
       bodyData = {role:"user"}
     }
 
-    let url = API_URL+"/users"+item._id;
+    let url = API_URL+"/users/"+item._id;
     try{
       let resp = await doApiMethodToken(url,"PATCH",bodyData)
       console.log(resp.data)
@@ -33,9 +32,9 @@ export default function UserItem(props) {
     try{
       let resp = await doApiMethodToken(url,"DELETE",{})
       console.log(resp.data)
-      // if(resp.data){
-      //    props.doApi()
-      // }
+      
+       props.doApi()
+      
     }
     catch(err){
       console.log(err.response);
