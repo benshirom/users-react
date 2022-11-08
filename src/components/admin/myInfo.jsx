@@ -10,7 +10,7 @@ function MyInfo() {
     const doApi = async() => {
         let url=API_URL+"/users/myinfo"
         try{
-          let {data} = await doApiMethodToken(url);
+          let {data} = await doApiMethodToken(url,"GET");
           console.log(data);
            setUser(data);
         }
