@@ -4,14 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { Triangle } from 'react-loader-spinner'
 import { useState } from 'react';
 
-import { API_URL, doApiMethodSignUpLogin } from '../../services/service';
+import { API_URL, doApiMethodSignUpLogin,regEmail ,regPassword } from '../../services/service';
 const SignUp = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     const nav = useNavigate();
     let { register, handleSubmit, getValues, formState: { errors } } = useForm();
-    const regEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-    const regPassword = /^(?=.*[0-9])(?=.*[!@#$%^&*.<>])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
     const onSub = (_dataBody) => {
 

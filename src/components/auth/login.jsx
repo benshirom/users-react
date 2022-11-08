@@ -4,15 +4,16 @@ import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
 import { Triangle } from 'react-loader-spinner'
 
-import { API_URL, doApiMethodSignUpLogin, TOKEN_NAME,TOKEN_ROLE } from '../../services/service';
+import {
+  API_URL, doApiMethodSignUpLogin,
+  TOKEN_NAME, TOKEN_ROLE, regEmail, regPassword
+} from '../../services/service';
 
 const Login = () => {
 
   const [isSubmitted, setIsSubmitted] = useState(false)
   const nav = useNavigate()
   let { register, handleSubmit, getValues, formState: { errors } } = useForm();
-  const regEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-  const [respError, setRespError] = useState("")
   const onSub = (_dataBody) => {
     console.log(_dataBody);
     setIsSubmitted(true);
@@ -37,7 +38,6 @@ const Login = () => {
 
     } catch (err) {
 
-      setRespError(err.response.data.msg_err)
       setIsSubmitted(false);
       alert(err.response.data.msg);
     }
@@ -54,9 +54,8 @@ const Login = () => {
           {errors.email && <p className='text-danger m-0'>Enter valid email</p>}
 
           <label className='mt-2'>password:</label>
-          <input {...register('password', { required: true, minLength: 2, maxLength: 25 })} type="password" className='form-control' />
-          {errors.password && <p className='text-danger m-0'>Enter valid password!</p>}
-          {respError && <p className='text-danger m-0'>{respError}</p>}
+          <input {...register('password', { required: true, minLength: 2, maxLength: 25, pattern: regPassword })} type="password" className='form-control' />
+          {errors.password && <p className='text-danger m-0'>Enter valid password! <br /> min 6 ,must a-z , must !@#$</p>}
           <div className='text-center d-flex flex-column '>
 
             {!isSubmitted ?
