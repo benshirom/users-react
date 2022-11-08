@@ -1,5 +1,5 @@
 import React from 'react'
-import { API_URL, doApiMethodSignUpLogin } from '../../services/service';
+import { API_URL, doApiMethodSignUpLogin, doApiMethodToken } from '../../services/service';
 
 export default function UserItem(props) {
   let item = props.item;
@@ -16,11 +16,26 @@ export default function UserItem(props) {
 
     let url = API_URL+"/users/changeRole/"+item._id;
     try{
-      let resp = await doApiMethodSignUpLogin(url,"PATCH",bodyData)
+      let resp = await doApiMethodToken(url,"PATCH",bodyData)
       console.log(resp.data)
       if(resp.data){
          props.doApi()
       }
+    }
+    catch(err){
+      console.log(err.response);
+      alert("There problem, or you try to change superAdmin to user");
+    }
+  }
+  const ondDelClick = async() => {
+    
+    let url = API_URL+"/users/"+item._id;
+    try{
+      let resp = await doApiMethodToken(url,"DELETE")
+      console.log(resp.data)
+      // if(resp.data){
+      //    props.doApi()
+      // }
     }
     catch(err){
       console.log(err.response);
@@ -39,7 +54,7 @@ export default function UserItem(props) {
           </button>
         </td>
       <td>
-        <button className='badge bg-danger'>Del</button>
+        <button className='badge bg-danger' onClick={ondDelClick}>Del</button>
       </td>
     </tr>
   )
