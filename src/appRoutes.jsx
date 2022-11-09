@@ -38,6 +38,8 @@ const AppRoutes = () => {
                     <Route path='/admin' element={<HomeAdmin />} />
                     <Route path='/admin/usersList' element={<UsersList />} />
                     <Route path='/admin/myinfo' element={<MyInfo />} />
+                    <Route path='/admin/toysList' element={<ToysList />} />
+
                     {/* ******** */}
                 </Route>
                 {/*   (*) => Rest of routes!?!?  */}

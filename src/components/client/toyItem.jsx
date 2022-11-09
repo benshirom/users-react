@@ -1,5 +1,5 @@
 import React from 'react'
-import { API_URL, doApiMethodToken } from '../../services/service';
+import { API_URL, doApiMethodToken ,TOKEN_ROLE} from '../../services/service';
 
 export default function ToyItem(props) {
 
@@ -24,18 +24,16 @@ export default function ToyItem(props) {
   let item = props.item;
   return (
     <tr>
-      {/* <td>{props.index + 1}</td>
-      <td title={item.info}>{item.name}</td>
-      <td>{item.location}</td>
-      <td>{item.categories_url}</td>
-      <td>{item.price} nis</td>
-      <td>{item.user_nickname } </td>
-      <td>{String(item.active) } </td>
-      <td>{item.date_created } </td>
-       */}
-      {/* <td>
+      <td>{props.index + 1}</td>
+      <td title={item.id}>{item.name}</td>
+      <td>{item.category}</td>
+      <td>{item.price}</td>
+      <td>{item.info} nis</td>
+      <td>{item.img_url } </td>
+      
+      {localStorage.getItem(TOKEN_ROLE)=="admin"&&<td>
         <button onClick={() => {onDelClick()}} className='btn btn-danger'>Del</button>
-      </td> */}
+      </td>}
     </tr>
   )
 }
