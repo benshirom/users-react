@@ -1,7 +1,7 @@
 import axios from 'axios'
 // export const API_URL = 'https://userapiben.cyclic.app'
-export const API_URL = 'http://localhost:27017'
-// export const API_URL = 'https://user-api-ptu9.onrender.com'
+// export const API_URL = 'http://localhost:27017'
+export const API_URL = 'https://user-api-ptu9.onrender.com'
 export const TOKEN_NAME = "my-token";
 export const TOKEN_ROLE = "my-role";
 export const TOKEN_ID = "my-ID";
