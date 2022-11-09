@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useNavigate } from "react-router-dom"
-import { TOKEN_NAME,TOKEN_ROLE } from '../../services/service'
+import { TOKEN_NAME, TOKEN_ROLE } from '../../services/service'
 
 const Header = () => {
 
@@ -28,7 +28,7 @@ const Header = () => {
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarNavDropdown">
+          <div className="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
             <ul className="navbar-nav">
               <li className="nav-item">
                 <Link className="nav-link active" aria-current="page" to={'/'}>Home</Link>
@@ -36,27 +36,33 @@ const Header = () => {
               <li className="nav-item">
                 <Link className="nav-link active" to={'/about'}>About</Link>
               </li>
-              {localStorage[TOKEN_NAME] ?
-              <span className="d-flex">
+              {localStorage[TOKEN_NAME] &&
                 <li className="nav-item">
                   <Link className="nav-link active" to={'/myinfo'}>My Info</Link>
-                </li>
+                </li>}
+            </ul>
+            {localStorage[TOKEN_NAME] ?
+              <ul className="navbar-nav">
                 <li>
                   <button className='btn btn-danger' onClick={onLogOut}>Log out</button>
                 </li>
-              </span>
-                :
-                <li className="nav-item">
-                  <Link className="nav-link" to={'/loginsign'}>Login / sign up</Link>
+              </ul>
+              :
+              <ul className="navbar-nav flex-row">
+
+                <li className="nav-item ">
+                  <Link className="nav-link active" to={'/login'}>Login</Link>
+
                 </li>
-              }
+                <li className="nav-link">/</li>
+                <li className="nav-item ">
+                  <Link className="nav-link active" to={'/signup'}>sign up</Link>
+
+                </li>
+              </ul>
+            }
 
 
-
-
-
-
-            </ul>
           </div>
         </div>
       </nav>
