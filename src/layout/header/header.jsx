@@ -40,6 +40,10 @@ const Header = () => {
                 <li className="nav-item">
                   <Link className="nav-link active" to={'/myinfo'}>My Info</Link>
                 </li>}
+                
+                <li className="nav-item">
+                  <Link className="nav-link active" to={'/toysList'}>Toys List</Link>
+                </li>
             </ul>
             {localStorage[TOKEN_NAME] ?
               <ul className="navbar-nav">

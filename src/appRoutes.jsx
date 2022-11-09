@@ -12,6 +12,7 @@ import Home from './components/client/home'
 import NotFound from './components/notFound'
 import Layout from './layout/layout'
 import LayoutAdmin from './layoutAdmin/layoutAdmin'
+import ToysList from './components/client/toysList' 
 const AppRoutes = () => {
     return (
         <Router>
@@ -26,6 +27,7 @@ const AppRoutes = () => {
                     <Route path='/signup' element={<SignUp />} />
                     <Route path='/verification/:name' element={<Verification />} />
                     <Route path='/myinfo' element={<MyInfo />} />
+                    <Route path='/toysList' element={<ToysList />} />
 
                     {/* ******** */}
                 </Route>
