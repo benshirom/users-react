@@ -6,7 +6,7 @@ import { Triangle } from 'react-loader-spinner'
 
 import {
   API_URL, doApiMethodSignUpLogin,
-  TOKEN_NAME, TOKEN_ROLE, regEmail, regPassword
+  TOKEN_NAME, TOKEN_ROLE,TOKEN_ID ,regEmail, regPassword
 } from '../../services/service';
 
 const Login = () => {
@@ -28,6 +28,7 @@ const Login = () => {
       if (data.token) {
         localStorage.setItem(TOKEN_ROLE, data.userRole);
         localStorage.setItem(TOKEN_NAME, data.token);
+        localStorage.setItem(TOKEN_ID, data._id);
         console.log(data);
         if (data.userRole == "admin"||data.userRole == "superadmin") {
           nav("/admin");

@@ -1,5 +1,5 @@
 import React from 'react'
-import { API_URL, doApiMethodToken ,TOKEN_ROLE} from '../../services/service';
+import { API_URL, doApiMethodToken ,TOKEN_ID,TOKEN_ROLE} from '../../services/service';
 
 export default function ToyItem(props) {
 
@@ -31,7 +31,7 @@ export default function ToyItem(props) {
       <td>{item.info} nis</td>
       <td>{item.img_url } </td>
       
-      {localStorage.getItem(TOKEN_ROLE)=="admin"&&<td>
+      {(localStorage.getItem(TOKEN_ROLE)=="admin"||localStorage.getItem(TOKEN_ID)==item.user_id)&&<td>
         <button onClick={() => {onDelClick()}} className='btn btn-danger'>Del</button>
       </td>}
     </tr>

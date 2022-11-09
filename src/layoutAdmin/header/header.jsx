@@ -40,6 +40,9 @@ const HeaderAdmin = () => {
                 <li className="nav-item">
                   <Link className="nav-link active" to={'/admin/toysList'}>Toys list</Link>
                 </li>
+                {localStorage[TOKEN_NAME]  && <li className="nav-item">
+                  <Link className="nav-link active" to={'/admin/mytoysList'}>My Toys</Link>
+                </li>}
 
             </ul>
             {localStorage[TOKEN_NAME] ?

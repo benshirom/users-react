@@ -13,6 +13,7 @@ import NotFound from './components/notFound'
 import Layout from './layout/layout'
 import LayoutAdmin from './layoutAdmin/layoutAdmin'
 import ToysList from './components/client/toysList' 
+import MyToysList from './components/client/myToysList'
 const AppRoutes = () => {
     return (
         <Router>
@@ -28,6 +29,7 @@ const AppRoutes = () => {
                     <Route path='/verification/:name' element={<Verification />} />
                     <Route path='/myinfo' element={<MyInfo />} />
                     <Route path='/toysList' element={<ToysList />} />
+                    <Route path='/mytoysList' element={<MyToysList />} />
 
                     {/* ******** */}
                 </Route>
@@ -39,6 +41,8 @@ const AppRoutes = () => {
                     <Route path='/admin/usersList' element={<UsersList />} />
                     <Route path='/admin/myinfo' element={<MyInfo />} />
                     <Route path='/admin/toysList' element={<ToysList />} />
+                    <Route path='/admin/mytoysList' element={<MyToysList />} />
+
 
                     {/* ******** */}
                 </Route>
