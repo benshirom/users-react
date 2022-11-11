@@ -28,7 +28,7 @@ const Login = () => {
       if (data.token) {
         localStorage.setItem(TOKEN_ROLE, data.userRole);
         localStorage.setItem(TOKEN_NAME, data.token);
-        localStorage.setItem(TOKEN_ID, data._id);
+        localStorage.setItem(TOKEN_ID, data.id);
         console.log(data);
         if (data.userRole == "admin"||data.userRole == "superadmin") {
           nav("/admin");
