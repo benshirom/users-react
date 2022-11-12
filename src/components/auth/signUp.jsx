@@ -43,10 +43,10 @@ const SignUp = () => {
 
                     <label className='mt-2'>First name:</label>
                     <input {...register('fullName[firstName]', { required: true, minLength: 2, maxLength: 25 })} type="text" className='form-control' />
-                    {errors.name && <p className='text-danger m-0'>Enter valid name!</p>}
+                    {errors.fullName.firstName && <p className='text-danger m-0'>Enter valid first name! Between 2-20 chars</p>}
                     <label className='mt-2'>Last name:</label>
                     <input {...register('fullName[lastName]', { required: true, minLength: 2, maxLength: 25 })} type="text" className='form-control' />
-                    {errors.name && <p className='text-danger m-0'>Enter valid name!</p>}
+                    {errors.fullName.lastName && <p className='text-danger m-0'>Enter valid last name! Between 2-20 chars</p>}
 
                     <label className='mt-2'>email:</label>
                     <input {...register('email', { required: true, minLength: 2, maxLength: 35, pattern: regEmail })} type="text" className='form-control' />
