@@ -43,18 +43,18 @@ const SignUp = () => {
 
                     <label className='mt-2'>First name:</label>
                     <input {...register('fullName[firstName]', { required: true, minLength: 2, maxLength: 25 })} type="text" className='form-control' />
-                    {errors.fullName.firstName && <p className='text-danger m-0'>Enter valid first name! Between 2-20 chars</p>}
+                    {errors.fullName.firstName && <p className='text-danger m-0'>Enter valid first name! Between 2-20 chars.</p>}
                     <label className='mt-2'>Last name:</label>
                     <input {...register('fullName[lastName]', { required: true, minLength: 2, maxLength: 25 })} type="text" className='form-control' />
-                    {errors.fullName.lastName && <p className='text-danger m-0'>Enter valid last name! Between 2-20 chars</p>}
+                    {errors.fullName.lastName && <p className='text-danger m-0'>Enter valid last name! Between 2-20 chars.</p>}
 
                     <label className='mt-2'>email:</label>
                     <input {...register('email', { required: true, minLength: 2, maxLength: 35, pattern: regEmail })} type="text" className='form-control' />
-                    {errors.email && <p className='text-danger m-0'>Enter valid email</p>}
+                    {errors.email && <p className='text-danger m-0'>Enter valid email!</p>}
 
                     <label className='mt-2'>password:</label>
                     <input {...register('password', { required: true, minLength: 2, maxLength: 25, pattern: regPassword })} type="password" className='form-control' />
-                    {errors.password && <p className='text-danger m-0'>Enter valid password!</p>}
+                    {errors.password && <p className='text-danger m-0'>Enter valid password! Between 6-16 chars Must contain 1 letter and 1 sign. </p>}
 
                     <label className='mt-2'>confirm password:</label>
                     <input {...register('password2', { required: true, validate: (value) => { return value == getValues('password') } })} type="password" className='form-control' />
